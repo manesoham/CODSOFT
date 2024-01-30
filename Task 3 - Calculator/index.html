@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator-grid {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+        }
+        button {
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 2rem;
+            width: 100%;
+            height: 100%;
+        }
+        .number-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .operator-button {
+            background-color: #008CBA;
+            color: white;
+        }
+        #delete {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-grid">
+        <button id="clear" class="operator-button">AC</button>
+        <div id="output"></div>
+        <button id="delete">DEL</button>
+        <button data-operator="+" class="operator-button">+</button>
+        <button data-number="1" class="number-button">1</button>
+        <button data-number="2" class="number-button">2</button>
+        <button data-number="3" class="number-button">3</button>
+        <button data-operator="-" class="operator-button">-</button>
+        <button data-number="4" class="number-button">4</button>
+        <button data-number="5" class="number-button">5</button>
+        <button data-number="6" class="number-button">6</button>
+        <button data-operator="*" class="operator-button">*</button>
+        <button data-number="7" class="number-button">7</button>
+        <button data-number="8" class="number-button">8</button>
+        <button data-number="9" class="number-button">9</button>
+        <button data-operator="/" class="operator-button">/</button>
+        <button data-number="0" class="number-button">0</button>
+        <button data-operator="." class="operator-button">.</button>
+        <button id="equals" class="operator-button">=</button>
+    </div>
+    <script>
+        const numberButtons = document.querySelectorAll('[data-number]')
+        const operatorButtons = document.querySelectorAll('[data-operator]')
+        const equalsButton = document.querySelector('#equals')
+        const deleteButton = document.querySelector('#delete')
+        const clearButton = document.querySelector('#clear')
+        const output = document.querySelector('#output')
+        let currentOperand = ''
+        let previousOperand = ''
+        let currentOperator = null
+
+        numberButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                appendNumber(button.innerText)
+                updateOutput()
+            })
+        })
+
+        operatorButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                chooseOperator(button.innerText)
+                updateOutput()
+            })
+        })
+
+        equalsButton.addEventListener('click', () => {
+            compute()
+            updateOutput()
+        })
+
+        clearButton.addEventListener('click', () => {
+            clear()
+            updateOutput()
+        })
+
+        deleteButton.addEventListener('click', () => {
+            deleteNumber()
+            updateOutput()
+        })
+
+        function appendNumber(number) {
+            currentOperand += number
+        }
+
+        function chooseOperator(operator) {
+            if (currentOperand === '') return
+            if (previousOperand !== '') compute()
+            currentOperator = operator
+            previousOperand = currentOperand
+            currentOperand = ''
+        }
+
+        function compute() {
+            let computation
+            const prev = parseFloat(previousOperand)
+            const current = parseFloat(currentOperand)
+            if (isNaN(prev) || isNaN(current)) return
+            switch (currentOperator) {
+                case '+':
+                    computation = prev + current
+                    break
+                case '-':
+                    computation = prev - current
+                    break
+                case '*':
+                    computation = prev * current
+                    break
+                case '/':
+                    computation = prev / current
+                    break
+                default:
+                    return
+            }
+            currentOperand = computation
+            currentOperator = null
+            previousOperand = ''
+        }
+
+        function clear() {
+            currentOperand = ''
+            previousOperand = ''
+            currentOperator = null
+        }
+
+        function deleteNumber() {
+            currentOperand = currentOperand.toString().slice(0, -1)
+        }
+
+        function updateOutput() {
+            output.innerText = currentOperand
+        }
+    </script>
+</body>
+</html>
