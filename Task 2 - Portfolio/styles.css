@@ -1,0 +1,149 @@
+body {
+    background-color: #eee9da;
+}
+
+.intro {
+    position: relative;
+    text-align: center;
+}
+
+.intro .text {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img1{
+    height: 100vh;
+    width: 100%;
+    opacity: 15%;
+    object-fit: cover;
+} 
+
+.intro .name {
+    font-family: 'Sacramento', cursive;
+    color: #14638d;
+    display: inline-block;
+    margin: 0;
+    font-size: 7rem;
+}
+
+.intro .short {
+    font-family: 'Cormorant Garamond', serif;
+    color: #283f47;
+    font-weight: 700;
+    display: block;
+    margin: 0;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.about .self-img {
+    height: 300px;
+}
+
+.about {
+    margin: 100px auto 0px auto;
+    width: 50%;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+
+.skill-img {
+    width: 100px;
+    height: 100px;
+}
+
+.skills > .col-1 {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 50px;
+    flex-basis: 400px;
+}
+
+.skills > .col-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex-basis: 400px;
+}
+
+.skills {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    text-align: center;
+    flex-basis: 1000px;
+}
+
+h1{
+    margin-top: 130px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #14638d;
+}
+
+.projects {
+    
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    flex-basis: 300px;
+}
+
+.projects .project-img {
+    width: 300px;
+    border: 1px solid #14638d;
+    border-radius: 10%;
+} 
+
+.projects p {
+    width: 300px;
+    margin: 0px;
+}
+
+.projects h3 {
+    color: #14638d;
+}
+
+.project-1, .project-2, .project-3 {
+    background-color: #ffd2d2;
+    padding: 30px;
+}
+
+.resume > h3 {
+    text-align: center;
+    margin: 50px;
+    color: #14638d;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    background-color: #14638d;
+}
+
+.footer > .copyright {
+    color: #eee9da;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ffd2d2;
+}
